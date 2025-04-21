@@ -9,8 +9,13 @@
 </head>
 <body>
 <h1>Hello world</h1>
+{% for rub in rubrics %}
+<p><a href="{{ rub.get_absolute_url }}">{{rub.name}}</a></p>
+{% endfor %}
+
 {% for b in bbs%}
-<h2>{{b.title}} - {{b.price}}</h2>
+<h2><a href="{{ b.get_absolute_url }}">{{b.title}}</a> - {{b.price}}</h2>
+</h3>{{b.title_and_price}}</h3>
 {% endfor %}
 </body>
 </html>
