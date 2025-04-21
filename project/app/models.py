@@ -20,16 +20,21 @@ def validate_even(value):
         raise ValidationError(f"Число {value} четное")
 
 
+
+
+
+class PolozitValueValidator:
+    def __init__(self, value):
+        self.value = value
+    def __call__(self, value):
+        if value < 0:
+            raise ValidationError("Ваша ценна не коректна")
+
+
 class MinMaxValueValidator:
     def __init__(self, min_value, max_value):
         self.max_value = max_value
         self.min_value = min_value
-
-class PolozitValueValidator:
-    def __init__(self, value):
-        if value >= 0:
-            self.value = value
-
     def __call__(self, value):
         if value <= self.min_value or value >= self.max_value:
             raise ValidationError("Ваша цена вышла за диапазон")
